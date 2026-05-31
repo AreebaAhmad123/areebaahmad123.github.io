@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Areeba Ahmad — AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0b0d;--bg2:#0f1115;--bg3:#161820;--border:#1e2028;--border2:#2a2d3a;--amber:#d4a843;--amber2:#f0c060;--amber-dim:#8a6820;--text:#e8e6e1;--text2:#9896a0;--text3:#5a5870;--mono:'IBM Plex Mono',monospace;--serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);overflow-x:hidden;font-size:15px;line-height:1.7}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.4;pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:rgba(10,11,13,0.85);backdrop-filter:blur(12px)}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:0.08em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--amber)}
+section{position:relative;z-index:1}
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;max-width:1200px;margin:0 auto}
+.hero-inner{max-width:780px}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:0.8rem}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--amber)}
+.hero-name{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6.5rem);font-weight:600;line-height:1.0;color:var(--text);margin-bottom:0.4rem;letter-spacing:-0.02em}
+.hero-name em{color:var(--amber);font-style:italic}
+.hero-title{font-family:var(--mono);font-size:14px;color:var(--text2);margin-bottom:2rem;display:flex;align-items:center;gap:0.5rem}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--amber);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{font-size:16px;color:var(--text2);max-width:540px;line-height:1.8;margin-bottom:3rem}
+.hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap}
+.btn-primary{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 2rem;background:var(--amber);color:#0a0b0d;text-decoration:none;transition:all 0.2s;font-weight:500}
+.btn-primary:hover{background:var(--amber2);transform:translateY(-1px)}
+.btn-secondary{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 2rem;background:transparent;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--amber);background:rgba(212,168,67,0.06)}
+.hero-stats{margin-top:4rem;display:flex;gap:3rem;padding-top:2.5rem;border-top:1px solid var(--border2)}
+.stat-val{font-family:var(--serif);font-size:2.8rem;font-weight:600;color:var(--amber);line-height:1}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.3rem}
+.section-wrap{max-width:1200px;margin:0 auto;padding:6rem 3rem}
+.section-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem}
+.section-label::before{content:'';width:24px;height:1px;background:var(--amber)}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:600;line-height:1.15;color:var(--text);margin-bottom:3rem;letter-spacing:-0.01em}
+#about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+#about .about-text p{color:var(--text2);margin-bottom:1.2rem;font-size:15px;line-height:1.85}
+#about .about-text p strong{color:var(--text);font-weight:500}
+.about-meta{border:1px solid var(--border2);padding:2rem}
+.meta-item{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:0.3rem}
+.meta-item:last-child{border-bottom:none;padding-bottom:0}
+.meta-key{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase}
+.meta-val{font-size:14px;color:var(--text);font-family:var(--mono)}
+#skills .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.skill-card{border:1px solid var(--border2);padding:2rem;background:var(--bg2);transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:var(--amber-dim);transform:translateY(-2px)}
+.skill-card-label{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.2rem}
+.skill-card-title{font-family:var(--serif);font-size:1.4rem;color:var(--text);margin-bottom:1.5rem;font-weight:600}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{font-family:var(--mono);font-size:10px;color:var(--text2);padding:0.3rem 0.7rem;border:1px solid var(--border2);letter-spacing:0.05em}
+#projects .projects-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.proj-card{border:1px solid var(--border2);background:var(--bg2);display:grid;grid-template-columns:1fr 2fr;transition:border-color 0.2s}
+.proj-card:hover{border-color:var(--amber-dim)}
+.proj-num{padding:2.5rem;border-right:1px solid var(--border2);display:flex;flex-direction:column;justify-content:space-between}
+.proj-num-val{font-family:var(--serif);font-size:4rem;font-weight:600;color:var(--border2);line-height:1;transition:color 0.2s}
+.proj-card:hover .proj-num-val{color:var(--amber-dim)}
+.proj-badge{font-family:var(--mono);font-size:9px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.6rem;border:1px solid var(--amber-dim)}
+.proj-body{padding:2.5rem}
+.proj-title{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--text);margin-bottom:0.8rem;letter-spacing:-0.01em}
+.proj-desc{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:1.5rem}
+.proj-metrics{display:flex;gap:1.5rem;margin-bottom:1.5rem}
+.metric{background:var(--bg3);padding:0.6rem 1rem;border-left:2px solid var(--amber)}
+.metric-val{font-family:var(--mono);font-size:13px;color:var(--amber);font-weight:500}
+.metric-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
+.proj-link{font-family:var(--mono);font-size:10px;color:var(--amber);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.4rem;border-bottom:1px solid var(--amber-dim);padding-bottom:1px;transition:border-color 0.2s}
+.proj-link:hover{border-color:var(--amber)}
+#timeline .tl-wrap{position:relative;padding-left:3rem}
+.tl-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border2)}
+.tl-item{position:relative;margin-bottom:3rem}
+.tl-item::before{content:'';position:absolute;left:-3rem;top:6px;width:9px;height:9px;background:var(--amber);transform:translateX(-4px)}
+.tl-item::after{content:'';position:absolute;left:-3rem;top:10px;width:2rem;height:1px;background:var(--border2)}
+.tl-date{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.tl-role{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:0.2rem}
+.tl-org{font-family:var(--mono);font-size:12px;color:var(--text2);margin-bottom:0.8rem}
+.tl-desc{color:var(--text2);font-size:14px;line-height:1.8;list-style:none}
+.tl-desc li{margin-bottom:0.4rem;padding-left:1rem;position:relative}
+.tl-desc li::before{content:'▸';position:absolute;left:0;color:var(--amber);font-size:10px}
+#contact{border-top:1px solid var(--border)}
+#contact .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.contact-text p{color:var(--text2);font-size:15px;line-height:1.85;margin-bottom:1.5rem}
+.contact-links{display:flex;flex-direction:column;gap:0}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border);color:var(--text2);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:0.05em;transition:color 0.2s}
+.contact-link:hover{color:var(--amber)}
+.contact-link-icon{width:32px;height:32px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px}
+footer{padding:2rem 3rem;border-top:1px solid var(--border);max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.1s}.reveal-d2{transition-delay:0.2s}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}#hero{padding:7rem 1.5rem 3rem}.section-wrap{padding:4rem 1.5rem}#about .about-grid{grid-template-columns:1fr}#skills .skills-grid{grid-template-columns:1fr}.proj-card{grid-template-columns:1fr}.proj-num{border-right:none;border-bottom:1px solid var(--border2);padding:1.5rem}#contact .contact-inner{grid-template-columns:1fr}.hero-stats{gap:2rem}footer{flex-direction:column;gap:1rem;text-align:center}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<nav>
+  <div class="nav-logo">areeba_ahmad.py</div>
+  <div class="nav-links">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#timeline">Experience</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Graduate AI Engineer · PUCIT '26</div>
+    <h1 class="hero-name">Areeba<br><em>Ahmad</em></h1>
+    <div class="hero-title"><span id="typed-title">AI / ML Engineer · LLMOps Specialist</span><span class="cursor"></span></div>
+    <p class="hero-desc">I build autonomous AI systems — from 58,000-image computer vision pipelines to 4-agent LLM orchestration frameworks. Grounded in systems thinking, obsessed with shipping things that actually work.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-secondary">Contact Me</a>
+      <a href="https://github.com/AreebaAhmad123" class="btn-secondary" target="_blank">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">58k+</div><div class="stat-label">Images Trained</div></div>
+      <div><div class="stat-val">90%+</div><div class="stat-label">Model Accuracy</div></div>
+      <div><div class="stat-val">4</div><div class="stat-label">Agent Pipeline</div></div>
+      <div><div class="stat-val">40%</div><div class="stat-label">Latency Reduced</div></div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title">Engineer by craft,<br><em style="font-style:italic;color:var(--amber)">builder by habit</em></h2>
+        <p>I'm a final-year IT graduate from PUCIT Lahore with a compulsion for building systems that run themselves. My work spans computer vision, agentic LLM pipelines, MLOps automation, and backend API engineering.</p>
+        <p>In my current role as a <strong>Research Assistant at PUCIT</strong>, I architected MCPValidator3 — a 4-microservice agent framework communicating via A2A JSON-RPC 2.0, with MCP servers built on fastmcp 2.13.1. I also shipped an autonomous MLOps auditor that clones repos, runs AI-powered analysis via <strong>Gemini 2.5 Flash</strong>, generates fixes, and opens GitHub PRs — fully orchestrated through n8n.</p>
+        <p>I co-authored an <strong>IEEE research paper</strong> on my FYP: a YOLOv8 system trained on 58,000+ annotated images for real-time carbon emission detection from vehicle smoke and fire. Six checkpoint iterations. >90% mAP.</p>
+        <p>I care about systems that are observable, modular, and actually deployable — not just notebooks that work on my machine.</p>
+      </div>
+      <div class="about-meta reveal reveal-d1">
+        <div class="meta-item"><div class="meta-key">Location</div><div class="meta-val">Lahore, Pakistan</div></div>
+        <div class="meta-item"><div class="meta-key">Degree</div><div class="meta-val">B.Sc. IT (Hons.) · PUCIT</div></div>
+        <div class="meta-item"><div class="meta-key">Graduation</div><div class="meta-val">2026</div></div>
+        <div class="meta-item"><div class="meta-key">Currently</div><div class="meta-val">Research Assistant · PUCIT AI Lab</div></div>
+        <div class="meta-item"><div class="meta-key">GitHub</div><div class="meta-val">AreebaAhmad123</div></div>
+        <div class="meta-item"><div class="meta-key">Publication</div><div class="meta-val">IEEE Co-Author · 2026</div></div>
+        <div class="meta-item" style="padding-top:1.5rem"><a href="mailto:areebaahmad703@gmail.com" class="btn-primary" style="display:inline-block;text-align:center">Get in Touch</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skills" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-wrap">
+    <div class="section-label">02 — Skills</div>
+    <h2 class="section-title">Technical<br>Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-card-label">Core Stack</div><div class="skill-card-title">AI & Machine<br>Learning</div><div class="skill-tags"><span class="tag">YOLOv8</span><span class="tag">DINOv2</span><span class="tag">PyTorch</span><span class="tag">scikit-learn</span><span class="tag">Ridge/Lasso</span><span class="tag">HNSW</span><span class="tag">Computer Vision</span><span class="tag">Transformers</span><span class="tag">timm</span><span class="tag">OpenCV</span></div></div>
+      <div class="skill-card reveal reveal-d1"><div class="skill-card-label">Specialisation</div><div class="skill-card-title">LLMOps &<br>Automation</div><div class="skill-tags"><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">MCP / fastmcp 2.13</span><span class="tag">A2A Orchestration</span><span class="tag">n8n</span><span class="tag">Gemini 2.5 Flash</span><span class="tag">OpenAI API</span><span class="tag">Google ADK</span><span class="tag">Prompt Engineering</span></div></div>
+      <div class="skill-card reveal reveal-d2"><div class="skill-card-label">Backend & Tools</div><div class="skill-card-title">Engineering<br>Infrastructure</div><div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">Pydantic</span><span class="tag">asyncio</span><span class="tag">httpx</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">SQL / MySQL</span><span class="tag">React + TypeScript</span><span class="tag">Streamlit</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label">03 — Projects</div>
+    <h2 class="section-title">Featured<br>Work</h2>
+    <div class="projects-grid">
+      <div class="proj-card reveal">
+        <div class="proj-num"><div class="proj-num-val">01</div><div class="proj-badge">FYP · IEEE Paper</div></div>
+        <div class="proj-body">
+          <div class="proj-title">AI Carbon Emission<br>Detection System</div>
+          <p class="proj-desc">Custom YOLOv8 object detection system for real-time vehicle smoke and fire classification from CCTV footage. Trained across 6 checkpoint iterations on a proprietary annotated dataset. Full pipeline from Roboflow augmentation through inference to real-time alert dispatch. Co-authored a 10-page IEEE paper documenting methodology, dataset construction, and evaluation results.</p>
+          <div class="proj-metrics"><div class="metric"><div class="metric-val">58,000+</div><div class="metric-label">Training Images</div></div><div class="metric"><div class="metric-val">&gt;90%</div><div class="metric-label">mAP Accuracy</div></div><div class="metric"><div class="metric-val">6</div><div class="metric-label">Checkpoints</div></div></div>
+          <div class="proj-stack"><span class="tag">YOLOv8</span><span class="tag">PyTorch</span><span class="tag">Roboflow</span><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">IEEE Publication</span></div>
+          <a href="https://github.com/AreebaAhmad123" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal reveal-d1">
+        <div class="proj-num"><div class="proj-num-val">02</div><div class="proj-badge">Agentic AI</div></div>
+        <div class="proj-body">
+          <div class="proj-title">MCPValidator3 — Autonomous<br>Multi-Agent Code System</div>
+          <p class="proj-desc">4-microservice agent framework: Orchestrator (:8100), Generator (:8200), Validator (:8300), UI Controller (:8400). Agents communicate via A2A JSON-RPC 2.0 over HTTP with asyncio + httpx and per-hop telemetry via Google ADK. MCP servers on fastmcp 2.13.1 for structured tool-calling. Validator enforces quality gates; outputs below threshold are auto-rejected and re-routed.</p>
+          <div class="proj-metrics"><div class="metric"><div class="metric-val">4</div><div class="metric-label">Microservices</div></div><div class="metric"><div class="metric-val">90+</div><div class="metric-label">Quality Gate</div></div></div>
+          <div class="proj-stack"><span class="tag">FastAPI</span><span class="tag">fastmcp 2.13.1</span><span class="tag">A2A JSON-RPC</span><span class="tag">Google ADK</span><span class="tag">asyncio</span><span class="tag">httpx</span></div>
+          <a href="https://github.com/AreebaAhmad123" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal reveal-d2">
+        <div class="proj-num"><div class="proj-num-val">03</div><div class="proj-badge">MLOps · CI/CD</div></div>
+        <div class="proj-body">
+          <div class="proj-title">MLOps Autopilot<br>Repository Auditor</div>
+          <p class="proj-desc">Fully automated ML repo quality system: clone (GitPython) → rule-based + AI audit (Gemini 2.5 Flash) → fix generation (Dockerfile, mlflow.yaml, test stubs) → GitHub PR (PyGithub) → HTML email — all n8n webhook-triggered with zero manual steps. Repos scored 0-100 on MLOps maturity across CI/CD, Docker, MLflow, and reproducibility dimensions.</p>
+          <div class="proj-metrics"><div class="metric"><div class="metric-val">8-step</div><div class="metric-label">Auto Pipeline</div></div><div class="metric"><div class="metric-val">0–100</div><div class="metric-label">Maturity Score</div></div></div>
+          <div class="proj-stack"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5 Flash</span><span class="tag">GitPython</span><span class="tag">PyGithub</span><span class="tag">n8n</span><span class="tag">Docker</span></div>
+          <a href="https://github.com/AreebaAhmad123/mlops-autopilot-auditor" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-num"><div class="proj-num-val">04</div><div class="proj-badge">Computer Vision · E-Commerce</div></div>
+        <div class="proj-body">
+          <div class="proj-title">Ring Design Recommendation<br>System</div>
+          <p class="proj-desc">Production visual similarity search for jewelry e-commerce. Center-stone masking isolates outer ring design so similarity is stone-invariant. DINOv2 embeddings queried via HNSW with multi-view aggregation. Two fine-tuned model versions evaluated with Recall@K and mAP@K at K=1,5,10,20. FastAPI production REST API with versioned model artifacts.</p>
+          <div class="proj-metrics"><div class="metric"><div class="metric-val">DINOv2</div><div class="metric-label">Backbone</div></div><div class="metric"><div class="metric-val">Recall@K</div><div class="metric-label">Evaluation</div></div></div>
+          <div class="proj-stack"><span class="tag">DINOv2</span><span class="tag">HNSW</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">timm</span><span class="tag">scikit-learn</span></div>
+          <a href="https://github.com/AreebaAhmad123" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="timeline" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-wrap">
+    <div class="section-label">04 — Experience & Education</div>
+    <h2 class="section-title">Timeline</h2>
+    <div class="tl-wrap">
+      <div class="tl-item reveal"><div class="tl-date">Nov 2025 — Present</div><div class="tl-role">Research Assistant — Generative & Agentic AI</div><div class="tl-org">PUCIT, University of the Punjab · Lahore</div><ul class="tl-desc"><li>Architected MCPValidator3: 4-agent distributed system with A2A JSON-RPC 2.0 and per-hop telemetry</li><li>Built MCP servers on fastmcp 2.13.1 for secure agent-to-database tool calling</li><li>Shipped AutoMCP API Forge: full-stack Postman/OpenAPI ingestion tool with React + TypeScript frontend</li><li>Automated end-to-end MLOps pipeline via n8n: audit → AI fix → GitHub PR → email</li></ul></div>
+      <div class="tl-item reveal reveal-d1"><div class="tl-date">Jun 2025 — Aug 2025</div><div class="tl-role">Web Development Intern</div><div class="tl-org">BixForgeSolutions · Remote</div><ul class="tl-desc"><li>Built dynamic blog CMS; rewrote SQL queries reducing page load by 40%</li><li>Delivered full-stack features independently in a remote agile team through spec to production</li></ul></div>
+      <div class="tl-item reveal reveal-d2"><div class="tl-date">2022 — 2026</div><div class="tl-role">B.Sc. (Hons.) Information Technology</div><div class="tl-org">PUCIT, University of the Punjab · Lahore</div><ul class="tl-desc"><li>Co-authored 10-page IEEE paper: "Unified AI Surveillance" — YOLOv8 carbon emission detection</li><li>Google Gen-AI Leader Specialization · Python for Everybody (University of Michigan)</li><li>Cybersecurity Research: "Sentinel Shield" — AI-driven warfare and algorithmic targeting analysis</li></ul></div>
+    </div>
+  </div>
+</section>
+<section id="contact" style="border-top:1px solid var(--border)">
+  <div class="section-wrap">
+    <div class="section-label">05 — Contact</div>
+    <div class="contact-inner">
+      <div>
+        <h2 class="section-title">Let's build<br><em style="font-style:italic;color:var(--amber)">something real</em></h2>
+        <div class="contact-text"><p>I'm actively looking for AI/ML, LLMOps, or Software Engineering roles — internships, graduate positions, or research collaborations.</p><p>If you're building something ambitious with agents, computer vision, or data pipelines, I'd love to hear about it.</p></div>
+        <div class="contact-links">
+          <a href="mailto:areebaahmad703@gmail.com" class="contact-link"><div class="contact-link-icon">✉</div>areebaahmad703@gmail.com</a>
+          <a href="https://linkedin.com/in/areeba90ahmad" class="contact-link" target="_blank"><div class="contact-link-icon">in</div>linkedin.com/in/areeba90ahmad</a>
+          <a href="https://github.com/AreebaAhmad123" class="contact-link" target="_blank"><div class="contact-link-icon">gh</div>github.com/AreebaAhmad123</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d1" style="border:1px solid var(--border2);padding:2.5rem;background:var(--bg2)">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.15em;margin-bottom:1.5rem">// send a message</div>
+        <div style="margin-bottom:1rem"><label style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem">Name</label><input type="text" placeholder="Your name" style="width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:0.75rem 1rem;font-family:var(--mono);font-size:13px;outline:none"></div>
+        <div style="margin-bottom:1rem"><label style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem">Email</label><input type="email" placeholder="your@email.com" style="width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:0.75rem 1rem;font-family:var(--mono);font-size:13px;outline:none"></div>
+        <div style="margin-bottom:1.5rem"><label style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem">Message</label><textarea rows="4" placeholder="Tell me about the role or project..." style="width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:0.75rem 1rem;font-family:var(--mono);font-size:13px;outline:none;resize:vertical"></textarea></div>
+        <a href="mailto:areebaahmad703@gmail.com" class="btn-primary" style="display:block;text-align:center">Send Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><p>© 2026 Areeba Ahmad · Built with precision</p><p style="color:var(--amber)">areeba_ahmad.ai</p></footer>
+<script>
+const titles=['AI / ML Engineer · LLMOps Specialist','Computer Vision Engineer · PyTorch & YOLOv8','FastAPI Backend · Agentic Systems Builder','MLOps · n8n · Gemini 2.5 Flash'];
+let ti=0,ci=0,deleting=false,el=document.getElementById('typed-title');
+function type(){const t=titles[ti];if(!deleting){el.textContent=t.slice(0,++ci);if(ci===t.length){deleting=true;setTimeout(type,2200);return}}else{el.textContent=t.slice(0,--ci);if(ci===0){deleting=false;ti=(ti+1)%titles.length}}setTimeout(type,deleting?40:65)}
+setTimeout(type,1200);
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
